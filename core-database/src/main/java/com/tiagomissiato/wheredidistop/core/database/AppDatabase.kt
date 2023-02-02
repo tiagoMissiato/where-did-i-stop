@@ -14,25 +14,12 @@
  * limitations under the License.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-rootProject.name = "Multimodule template"
+package com.tiagomissiato.wheredidistop.core.database
 
-include(":app")
-include(":core-data")
-include(":core-database")
-include(":core-testing")
-include(":core-ui")
-include(":feature-movielist")
+import androidx.room.Database
+import androidx.room.RoomDatabase
+
+@Database(entities = [MovieList::class], version = 1)
+abstract class AppDatabase : RoomDatabase() {
+    abstract fun movieListDao(): MovieListDao
+}

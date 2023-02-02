@@ -21,7 +21,7 @@ plugins {
 }
 
 android {
-    namespace = "com.tiagomissiato.core.ui"
+    namespace = "com.tiagomissiato.wheredidistop.core.ui"
     compileSdk = 33
 
     defaultConfig {

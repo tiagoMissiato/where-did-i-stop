@@ -23,14 +23,14 @@ plugins {
 }
 
 android {
-    namespace = "com.tiagomissiato.core.database"
+    namespace = "com.tiagomissiato.wheredidistop.core.database"
     compileSdk = 33
 
     defaultConfig {
         minSdk = 21
         targetSdk = 33
 
-        testInstrumentationRunner = "com.tiagomissiato.core.testing.HiltTestRunner"
+        testInstrumentationRunner = "com.tiagomissiato.wheredidistop.core.testing.HiltTestRunner"
         consumerProguardFiles("consumer-rules.pro")
 
         // The schemas directory contains a schema file for each version of the Room database.

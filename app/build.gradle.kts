@@ -23,17 +23,17 @@ plugins {
 }
 
 android {
-    namespace = "com.tiagomissiato"
+    namespace = "com.tiagomissiato.wheredidistop"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.tiagomissiato"
+        applicationId = "com.tiagomissiato.wheredidistop"
         minSdk = 21
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "com.tiagomissiato.core.testing.HiltTestRunner"
+        testInstrumentationRunner = "com.tiagomissiato.wheredidistop.core.testing.HiltTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -78,7 +78,7 @@ dependencies {
 
     implementation(project(":core-ui"))
     implementation(project(":core-data"))
-    implementation(project(":feature-dashboard"))
+    implementation(project(":feature-movielist"))
     androidTestImplementation(project(":core-testing"))
 
     // Core Android dependencies

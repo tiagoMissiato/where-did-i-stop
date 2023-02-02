@@ -22,7 +22,7 @@ plugins {
 }
 
 android {
-    namespace = "com.tiagomissiato.core.testing"
+    namespace = "com.tiagomissiato.wheredidistop.core.testing"
     compileSdk = 33
 
     defaultConfig {

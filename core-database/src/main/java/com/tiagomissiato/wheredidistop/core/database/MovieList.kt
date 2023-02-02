@@ -14,25 +14,28 @@
  * limitations under the License.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-rootProject.name = "Multimodule template"
+package com.tiagomissiato.wheredidistop.core.database
 
-include(":app")
-include(":core-data")
-include(":core-database")
-include(":core-testing")
-include(":core-ui")
-include(":feature-movielist")
+import androidx.room.Dao
+import androidx.room.Entity
+import androidx.room.Insert
+import androidx.room.PrimaryKey
+import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
+
+@Entity
+data class MovieList(
+    val name: String
+) {
+    @PrimaryKey(autoGenerate = true)
+    var uid: Int = 0
+}
+
+@Dao
+interface MovieListDao {
+    @Query("SELECT * FROM movielist ORDER BY uid DESC LIMIT 10")
+    fun getMovieLists(): Flow<List<MovieList>>
+
+    @Insert
+    suspend fun insertMovieList(item: MovieList)
+}
