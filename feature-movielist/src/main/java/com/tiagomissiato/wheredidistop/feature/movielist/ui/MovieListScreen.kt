@@ -81,7 +81,7 @@ internal fun MovieListScreen(
                 onValueChange = { nameMovieList = it }
             )
 
-            Button(modifier = Modifier.width(96.dp), onClick = { onSave(nameMovieList) }) {
+            Button(modifier = Modifier.width(96.dp).weight(1F), onClick = { onSave(nameMovieList) }) {
                 Text("Save")
             }
         }
