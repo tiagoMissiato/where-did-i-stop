@@ -1,4 +1,4 @@
-package com.tiagomissiato.wheredidistop.ui.theme
+package com.tiagomissiato.wheredidistop.core.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

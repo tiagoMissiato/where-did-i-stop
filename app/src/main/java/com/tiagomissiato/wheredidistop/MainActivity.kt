@@ -1,5 +1,6 @@
 package com.tiagomissiato.wheredidistop
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -10,7 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.tiagomissiato.wheredidistop.ui.theme.WhereDidIStopTheme
+import com.tiagomissiato.wheredidistop.core.ui.theme.WhereDidIStopTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,9 +36,17 @@ fun Greeting(name: String) {
 }
 
 @Preview(showBackground = true)
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    showBackground = true
+)
 @Composable
 fun DefaultPreview() {
     WhereDidIStopTheme {
-        Greeting("Android")
+        Surface(
+            color = MaterialTheme.colorScheme.background
+        ) {
+            Greeting("Android")
+        }
     }
 }
