@@ -6,7 +6,6 @@ plugins {
     alias(libs.plugins.hilt.gradle)
 }
 
-@Suppress("UnstableApiUsage")
 android {
     namespace = "com.tiagomissiato.wheredidistop"
     compileSdk = 33
