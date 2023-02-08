@@ -55,6 +55,10 @@ android {
 
 dependencies {
 
+    implementation(project(":core-ui"))
+    implementation(project(":core-network"))
+    implementation(project(":movie"))
+
     // Core Android dependencies
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

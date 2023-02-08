@@ -15,3 +15,10 @@ dependencyResolutionManagement {
 rootProject.name = "Where did I stop"
 
 include(":app")
+include(":core-ui")
+include(":core-network")
+include(":core-data")
+include(":movie")
+include(":ui-component")
+include(":data")
+include(":use-case")
