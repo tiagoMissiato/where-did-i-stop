@@ -46,8 +46,20 @@ android {
 
 dependencies {
 
+    implementation(project(":core-network"))
+
     // Core Android dependencies
     implementation(libs.androidx.core.ktx)
+
+    // Hilt Dependency Injection
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+    // Hilt and instrumented tests.
+    androidTestImplementation(libs.hilt.android.testing)
+    kaptAndroidTest(libs.hilt.android.compiler)
+    // Hilt and Robolectric tests.
+    testImplementation(libs.hilt.android.testing)
+    kaptTest(libs.hilt.android.compiler)
 
     // Compose
     implementation(libs.androidx.compose.ui)

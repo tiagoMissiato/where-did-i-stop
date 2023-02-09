@@ -47,7 +47,8 @@ android {
 
 dependencies {
 
-    implementation(project(":core-network"))
+    implementation(project(":use-case"))
+    implementation(project(":data"))
 
     // Core Android dependencies
     implementation(libs.androidx.core.ktx)

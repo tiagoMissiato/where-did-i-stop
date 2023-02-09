@@ -1,5 +1,6 @@
 package com.tiagomissiato.wheredidistop.core.network.di
 
+import com.tiagomissiato.wheredidistop.core.network.adapter.NetworkResultCallAdapterFactory
 import com.tiagomissiato.wheredidistop.core.network.api.TmdbApiService
 import com.tiagomissiato.wheredidistop.core.network.interceptor.BearerInterceptor
 import dagger.Module
@@ -36,17 +37,18 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient) =
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit =
         Retrofit
             .Builder()
             .client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create())
+            .addCallAdapterFactory(NetworkResultCallAdapterFactory.create())
             .baseUrl(BASE_URL)
             .build()
 
     @Singleton
     @Provides
-    fun provideApiService(retrofit: Retrofit) =
+    fun provideApiService(retrofit: Retrofit): TmdbApiService =
         retrofit.create(TmdbApiService::class.java)
 }
 

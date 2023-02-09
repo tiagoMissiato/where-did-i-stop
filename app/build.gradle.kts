@@ -57,9 +57,10 @@ dependencies {
     
     implementation(project(":core-ui"))
 
-    implementation(project(":core-ui"))
+    implementation(project(":core-network"))
     implementation(project(":core-network"))
     implementation(project(":movie"))
+    implementation(project(":data"))
 
     // Core Android dependencies
     implementation(libs.androidx.core.ktx)
@@ -90,6 +91,11 @@ dependencies {
     // Instrumented tests
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    //Image
+    implementation(libs.image.glide)
+    kapt(libs.image.glide.compile)
+    implementation(libs.image.glide.compose)
 
     // Local tests: jUnit, coroutines, Android runner
     testImplementation(libs.junit)
