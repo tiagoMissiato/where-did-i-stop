@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.kapt)
 }
+
 android {
     namespace = "com.tiagomissiato.wheredidistop.core.data"
     compileSdk = 33
@@ -45,8 +46,22 @@ android {
 
 dependencies {
 
+    implementation(project(":core-model"))
+    implementation(project(":core-network"))
+    implementation(project(":core-database"))
+
     // Core Android dependencies
     implementation(libs.androidx.core.ktx)
+
+    // Hilt Dependency Injection
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+    // Hilt and instrumented tests.
+    androidTestImplementation(libs.hilt.android.testing)
+    kaptAndroidTest(libs.hilt.android.compiler)
+    // Hilt and Robolectric tests.
+    testImplementation(libs.hilt.android.testing)
+    kaptTest(libs.hilt.android.compiler)
 
     // Compose
     implementation(libs.androidx.compose.ui)

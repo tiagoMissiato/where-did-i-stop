@@ -56,11 +56,11 @@ android {
 dependencies {
     
     implementation(project(":core-ui"))
-
-    implementation(project(":core-network"))
     implementation(project(":core-network"))
     implementation(project(":movie"))
-    implementation(project(":data"))
+    implementation(project(":tvshow"))
+    implementation(project(":core-data"))
+    implementation(project(":core-model"))
 
     // Core Android dependencies
     implementation(libs.androidx.core.ktx)
@@ -81,6 +81,8 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.compose.material)
+    implementation(libs.androidx.compose.material.icons.extended)
 
     // Compose
     implementation(libs.androidx.compose.ui)
