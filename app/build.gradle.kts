@@ -59,8 +59,6 @@ dependencies {
     implementation(project(":core-network"))
     implementation(project(":movie"))
     implementation(project(":tvshow"))
-    implementation(project(":core-data"))
-    implementation(project(":core-model"))
 
     // Core Android dependencies
     implementation(libs.androidx.core.ktx)

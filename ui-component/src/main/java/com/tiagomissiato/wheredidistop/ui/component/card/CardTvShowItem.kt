@@ -17,14 +17,14 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.tiagomissiato.wheredidistop.core.model.dto.TvShow
 import com.tiagomissiato.wheredidistop.core.ui.theme.WhereDidIStopTheme
 import com.tiagomissiato.wheredidistop.ui.component.R
+import com.tiagomissiato.wheredidistop.ui.component.card.vo.CardTvShowItemVo
 import com.tiagomissiato.wheredidistop.ui.theme.Typography
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CardTvShowItem(tvShow: TvShow)  {
+fun CardTvShowItem(tvShow: CardTvShowItemVo)  {
 
     Box(modifier = Modifier.clickable { { } }, contentAlignment = Alignment.BottomStart) {
         Card(modifier = Modifier.padding(8.dp), elevation = CardDefaults.cardElevation(4.dp)) {
@@ -105,7 +105,8 @@ fun PreviewCardTvShowItem() {
         Surface(
             color = MaterialTheme.colorScheme.background
         ) {
-            CardTvShowItem(TvShow(
+            CardTvShowItem(
+                CardTvShowItemVo(
                     id = 1,
                     adult = false,
                     voteAverage = 5.6,
@@ -114,7 +115,8 @@ fun PreviewCardTvShowItem() {
                     posterPath = "/sv1xJUazXeYqALzczSZ3O6nkH75.jpg",
                     releaseDate = "2022-11-09",
                     title = "Black Panther: Wakanda ForeverBlack Panther: Wakanda Forever"
-            ))
+                )
+            )
         }
     }
 }

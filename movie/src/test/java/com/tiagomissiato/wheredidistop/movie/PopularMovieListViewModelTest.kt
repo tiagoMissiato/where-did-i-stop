@@ -1,10 +1,10 @@
 package com.tiagomissiato.wheredidistop.movie
 
-import com.tiagomissiato.wheredidistop.core.domain.repository.movie.MovieRepository
-import com.tiagomissiato.wheredidistop.core.domain.usecase.movie.GetPopularMovieListUseCase
+import com.tiagomissiato.wheredidistop.movie.domain.MovieRepository
+import com.tiagomissiato.wheredidistop.movie.domain.GetPopularMovieListUseCase
 import com.tiagomissiato.wheredidistop.core.testing.BaseViewModelTest
-import com.tiagomissiato.wheredidistop.movie.popular.PopularMovieListViewModel
-import com.tiagomissiato.wheredidistop.movie.popular.PopularMovieUiState
+import com.tiagomissiato.wheredidistop.movie.popular.presenter.PopularMovieListViewModel
+import com.tiagomissiato.wheredidistop.movie.popular.presenter.PopularMovieUiState
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
 import io.mockk.mockk

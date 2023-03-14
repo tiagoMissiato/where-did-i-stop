@@ -28,8 +28,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.tiagomissiato.wheredidistop.core.ui.theme.WhereDidIStopTheme
-import com.tiagomissiato.wheredidistop.movie.popular.PopularMovieListScreen
-import com.tiagomissiato.wheredidistop.tvshow.popular.PopularTvShowList
+import com.tiagomissiato.wheredidistop.movie.popular.presenter.PopularMovieListScreen
+import com.tiagomissiato.wheredidistop.tvshow.popular.presenter.PopularTvShowList
 import dagger.hilt.android.AndroidEntryPoint
 
 sealed class Screen(val route: String, val name: String, val icon: ImageVector) {

@@ -1,8 +1,8 @@
 package com.tiagomissiato.wheredidistop.core.network.api
 
 import com.tiagomissiato.wheredidistop.core.network.adapter.NetworkResult
-import com.tiagomissiato.wheredidistop.core.model.response.PopularMovieResponse
-import com.tiagomissiato.wheredidistop.core.model.response.PopularTvShowResponse
+import com.tiagomissiato.wheredidistop.core.network.model.response.PopularMovieResponse
+import com.tiagomissiato.wheredidistop.core.network.model.response.PopularTvShowResponse
 import retrofit2.http.GET
 
 interface TmdbApiService {

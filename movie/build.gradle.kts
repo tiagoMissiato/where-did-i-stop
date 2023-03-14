@@ -44,9 +44,8 @@ dependencies {
 
     implementation(project(":core-ui"))
     implementation(project(":ui-component"))
-    implementation(project(":core-model"))
-    implementation(project(":core-domain"))
-    implementation(project(":core-data"))
+    implementation(project(":core-network"))
+    implementation(project(":core-database"))
     testImplementation(project(":core-testing"))
 
     // Core Android dependencies

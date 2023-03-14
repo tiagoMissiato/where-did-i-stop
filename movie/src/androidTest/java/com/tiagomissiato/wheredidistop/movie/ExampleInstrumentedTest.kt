@@ -2,10 +2,9 @@ package com.tiagomissiato.wheredidistop.movie
 
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
-import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.tiagomissiato.wheredidistop.movie.popular.PopularMovieList
-import com.tiagomissiato.wheredidistop.movie.popular.PopularMovieUiState
+import com.tiagomissiato.wheredidistop.movie.popular.presenter.PopularMovieList
+import com.tiagomissiato.wheredidistop.movie.popular.presenter.PopularMovieUiState
 
 import org.junit.Test
 import org.junit.runner.RunWith

@@ -18,14 +18,14 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.tiagomissiato.wheredidistop.core.model.dto.Movie
 import com.tiagomissiato.wheredidistop.core.ui.theme.WhereDidIStopTheme
 import com.tiagomissiato.wheredidistop.ui.component.R
+import com.tiagomissiato.wheredidistop.ui.component.card.vo.CardMovieItemVo
 import com.tiagomissiato.wheredidistop.ui.theme.Typography
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CardMovieItem(movie: Movie) {
+fun CardMovieItem(movie: CardMovieItemVo) {
     Box(modifier = Modifier.clickable { { } }, contentAlignment = Alignment.BottomStart) {
         Card(modifier = Modifier.padding(8.dp), elevation = CardDefaults.cardElevation(4.dp)) {
             Column(modifier = Modifier.padding(start = 100.dp, top = 8.dp, bottom = 8.dp, end = 8.dp)) {
@@ -112,17 +112,19 @@ fun PreviewCardMovieItem() {
         Surface(
             color = MaterialTheme.colorScheme.background
         ) {
-            CardMovieItem(Movie(
-                id = 1,
-                adult = false,
-                voteAverage = 5.6,
-                originalLanguage = "en",
-                originalTitle = "Black Panther: Wakanda Forever",
-                overview = "Queen Ramonda, Shuri, M’BakuQueen Ramonda, Shuri, M’BakuQueen Ramonda, Shuri, M’BakuQueen Ramonda, Shuri, M’BakuQueen Ramonda, Shuri, M’BakuQueen Ramonda, Shuri, M’BakuQueen Ramonda, Shuri, M’Baku,",
-                posterPath = "/sv1xJUazXeYqALzczSZ3O6nkH75.jpg",
-                releaseDate = "2022-11-09",
-                title = "Black Panther: Wakanda ForeverBlack Panther: Wakanda Forever"
-            ))
+            CardMovieItem(
+                CardMovieItemVo(
+                    id = 1,
+                    adult = false,
+                    voteAverage = 5.6,
+                    originalLanguage = "en",
+                    originalTitle = "Black Panther: Wakanda Forever",
+                    overview = "Queen Ramonda, Shuri, M’BakuQueen Ramonda, Shuri, M’BakuQueen Ramonda, Shuri, M’BakuQueen Ramonda, Shuri, M’BakuQueen Ramonda, Shuri, M’BakuQueen Ramonda, Shuri, M’BakuQueen Ramonda, Shuri, M’Baku,",
+                    posterPath = "/sv1xJUazXeYqALzczSZ3O6nkH75.jpg",
+                    releaseDate = "2022-11-09",
+                    title = "Black Panther: Wakanda ForeverBlack Panther: Wakanda Forever"
+                )
+            )
         }
     }
 }
