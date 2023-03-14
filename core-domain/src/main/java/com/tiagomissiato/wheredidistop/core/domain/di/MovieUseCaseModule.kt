@@ -1,21 +1,19 @@
 package com.tiagomissiato.wheredidistop.core.domain.di
 
-import com.tiagomissiato.wheredidistop.core.domain.movie.GetPopularMovieListUseCase
-import com.tiagomissiato.wheredidistop.core.domain.movie.GetPopularMovieListUseCaseImpl
-import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.Dispatchers
 import javax.inject.Singleton
+
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface MovieUseCaseModule {
+object MovieProviderModule {
 
     @Singleton
-    @Binds
-    fun bindPopularMovieUseCase(
-        useCase: GetPopularMovieListUseCaseImpl
-    ): GetPopularMovieListUseCase
+    @Provides
+    fun providerIoDispatcher() = Dispatchers.IO
 
 }

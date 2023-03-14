@@ -2,7 +2,6 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.hilt.gradle)
 }
@@ -17,10 +16,6 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
-
-        ksp {
-            arg("room.schemaLocation", "$projectDir/schemas")
-        }
     }
 
     buildFeatures {
@@ -48,15 +43,16 @@ android {
 dependencies {
 
     implementation(project(":core-ui"))
+    implementation(project(":ui-component"))
     implementation(project(":core-model"))
     implementation(project(":core-domain"))
     implementation(project(":core-data"))
+    testImplementation(project(":core-testing"))
 
     // Core Android dependencies
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
-
 
     // Hilt Dependency Injection
     implementation(libs.hilt.android)
@@ -67,10 +63,6 @@ dependencies {
     // Hilt and Robolectric tests.
     testImplementation(libs.hilt.android.testing)
     kaptTest(libs.hilt.android.compiler)
-
-    implementation(libs.square.retrofit2)
-    implementation(libs.square.retrofit2.converter.moshi)
-    implementation(libs.square.okhttp3.logging.interceptor)
 
     // Compose
     implementation(libs.androidx.compose.ui)
@@ -86,4 +78,10 @@ dependencies {
 
     implementation(libs.image.coil.compose)
 
+    // Local tests: jUnit, coroutines, Android runner
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
+
+    //Mockk
+    testImplementation(libs.mockk)
 }

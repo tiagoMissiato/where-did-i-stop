@@ -2,7 +2,6 @@ package com.tiagomissiato.wheredidistop
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
@@ -12,6 +11,7 @@ import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Movie
+import androidx.compose.material.icons.outlined.Refresh
 import androidx.compose.material.icons.outlined.Tv
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -28,7 +28,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.tiagomissiato.wheredidistop.core.ui.theme.WhereDidIStopTheme
-import com.tiagomissiato.wheredidistop.movie.popular.PopularMovieList
+import com.tiagomissiato.wheredidistop.movie.popular.PopularMovieListScreen
 import com.tiagomissiato.wheredidistop.tvshow.popular.PopularTvShowList
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -57,6 +57,7 @@ class MainActivity : ComponentActivity() {
 fun MainScreen(){
     val navController = rememberNavController()
     Scaffold(
+        topBar = { TopBar( {} ) },
         bottomBar = {
             AppBottomNavigation(navController)
         }
@@ -65,11 +66,26 @@ fun MainScreen(){
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun TopBar(clearCache: () -> Unit) {
+    TopAppBar(
+        title = { Text("Where did I stop") },
+        navigationIcon = { },
+        actions = {
+            // RowScope here, so these icons will be placed horizontally
+            IconButton(onClick = { clearCache() }) {
+                Icon(Icons.Outlined.Refresh, contentDescription = "Localized description")
+            }
+        }
+    )
+}
+
 @Composable
 fun NavigationGraph(navController: NavHostController, modifier: Modifier) {
     NavHost(navController, startDestination = Screen.Movie.route, modifier = modifier) {
         composable(Screen.Movie.route) {
-            PopularMovieList()
+            PopularMovieListScreen()
         }
         composable(Screen.TvShow.route) {
             PopularTvShowList()

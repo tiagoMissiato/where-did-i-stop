@@ -2,7 +2,7 @@ package com.tiagomissiato.wheredidistop.tvshow.popular
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.tiagomissiato.wheredidistop.core.domain.movie.GetPopularTvShowListUseCase
+import com.tiagomissiato.wheredidistop.core.domain.usecase.tvshow.GetPopularTvShowUseCase
 import com.tiagomissiato.wheredidistop.core.model.dto.TvShow
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,7 +17,7 @@ data class PopularTvShowUiState(
 
 @HiltViewModel
 class PopularTvShowListViewModel @Inject constructor(
-    private val popularTvShowUseCase: GetPopularTvShowListUseCase
+    private val popularTvShowUseCase: GetPopularTvShowUseCase
 ) : ViewModel() {
     // Game UI state
     private val _uiState = MutableStateFlow(PopularTvShowUiState())
@@ -25,7 +25,7 @@ class PopularTvShowListViewModel @Inject constructor(
 
     fun getPopularList() {
         viewModelScope.launch {
-            popularTvShowUseCase.getPopularTvShowList().collect { list ->
+            popularTvShowUseCase().collect { list ->
                 _uiState.value = PopularTvShowUiState(tvShowList = list)
             }
         }

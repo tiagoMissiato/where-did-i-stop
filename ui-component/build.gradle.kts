@@ -2,7 +2,6 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.kapt)
 }
 
@@ -16,10 +15,6 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
-
-        ksp {
-            arg("room.schemaLocation", "$projectDir/schemas")
-        }
     }
 
     buildFeatures {
@@ -46,6 +41,9 @@ android {
 
 dependencies {
 
+    implementation(project(":core-ui"))
+    implementation(project(":core-model"))
+
     // Core Android dependencies
     implementation(libs.androidx.core.ktx)
 
@@ -53,7 +51,11 @@ dependencies {
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.material.icons.extended)
     // Tooling
     debugImplementation(libs.androidx.compose.ui.tooling)
+
+    //Image
+    implementation(libs.image.coil.compose)
 
 }
