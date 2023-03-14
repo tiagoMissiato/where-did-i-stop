@@ -9,19 +9,6 @@ class GetPopularMovieListUseCase @Inject constructor(
 
     var number: Int? = null
 
-    operator fun invoke(refresh: Boolean)  = flow {
-        number?.also {
-
-        }
-        val cachedMovie = if (refresh) {
-            movieRepository.clearCache()
-            emptyList()
-        } else {
-            movieRepository.getCachedPopularMovies()
-        }
-
-        emit(cachedMovie.ifEmpty {
-            movieRepository.getRemotePopularMovies()
-        })
-    }
+    operator fun invoke(refresh: Boolean) =
+        movieRepository.getPopularMovies()
 }

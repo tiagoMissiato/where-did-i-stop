@@ -1,40 +1,57 @@
 package com.tiagomissiato.wheredidistop.movie.data
 
+import com.tiagomissiato.wheredidistop.core.database.dao.MovieDao
 import com.tiagomissiato.wheredidistop.core.network.adapter.NetworkResult
-import com.tiagomissiato.wheredidistop.core.network.adapter.NetworkResultException
+import com.tiagomissiato.wheredidistop.core.network.api.TmdbApiService
 import com.tiagomissiato.wheredidistop.movie.data.model.Movie
 import com.tiagomissiato.wheredidistop.movie.domain.MovieRepository
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class MovieRepositoryImpl @Inject constructor(
-    private val remoteDataSource: MovieRemoteDataSource,
-    private val localDataSource: MovieLocalDataSource
+    private val remoteDataSource: TmdbApiService,
+    private val localDataSource: MovieDao
 ): MovieRepository {
 
-    override suspend fun getRemotePopularMovies(): List<Movie> =
-        when (val response = remoteDataSource.getPopularMovieList()) {
-            is NetworkResult.Error -> throw NetworkResultException.Error(
-                code = response.code,
-                msg = response.message
-            )
-            is NetworkResult.Exception -> throw NetworkResultException.Exception(response.e)
+    override fun getPopularMovies() = flow {
+        val list = when (val response = remoteDataSource.getPopularMovies()) {
+            is NetworkResult.Error -> getCachedPopularMovies()
+            is NetworkResult.Exception -> getCachedPopularMovies()
             is NetworkResult.Success -> {
-                val listMovie = response.data.list.map { it.toDto() }
 
-                localDataSource.insertPopularMovieList(
-                    listMovie.map { it.toEntity() }
-                )
+                val remoteData = response.data.list.map { it.toEntity() }
 
-                listMovie
+                localDataSource.deleteAll()
+                localDataSource.insertAll(remoteData)
+
+                getCachedPopularMovies()
+            }
+        }
+        
+        emit(list)
+    }
+
+    override suspend fun getRemotePopularMovies(): List<Movie> =
+        when (val response = remoteDataSource.getPopularMovies()) {
+            is NetworkResult.Error -> getCachedPopularMovies()
+            is NetworkResult.Exception -> getCachedPopularMovies()
+            is NetworkResult.Success -> {
+
+                val remoteData = response.data.list.map { it.toEntity() }
+
+                localDataSource.deleteAll()
+                localDataSource.insertAll(remoteData)
+
+                getCachedPopularMovies()
             }
         }
 
     override suspend fun getCachedPopularMovies(): List<Movie> =
         localDataSource
-            .getPopularMovieList()
+            .getAll()
             .map { it.toDto() }
 
     override suspend fun clearCache() {
-        localDataSource.clearCache()
+        localDataSource.deleteAll()
     }
 }

@@ -28,6 +28,18 @@ fun MovieResponse.toDto() = Movie(
     title = this.title
 )
 
+fun MovieResponse.toEntity() = MovieEntity(
+    id = this.id,
+    adult = this.adult,
+    voteAverage = this.voteAverage,
+    originalLanguage = this.originalLanguage,
+    originalTitle = this.originalTitle,
+    overview = this.overview,
+    posterPath = this.posterPath,
+    releaseDate = this.releaseDate,
+    title = this.title
+)
+
 fun Movie.toEntity() = MovieEntity(
     id = this.id,
     adult = this.adult,
