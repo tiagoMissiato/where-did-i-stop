@@ -1,3 +1,3 @@
-# Dependencieses
+# Dependencieseses
 * Hilt
 
