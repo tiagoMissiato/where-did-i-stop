@@ -37,7 +37,8 @@ fun MovieDetailScreen(
         AsyncImage(
             modifier = Modifier
                 .fillMaxWidth()
-                .blur(radius = 5.dp).graphicsLayer {
+                .blur(radius = 5.dp)
+                .graphicsLayer {
                     translationY = -0.5f * scrollState.value
                 },
             contentScale = ContentScale.FillWidth,
@@ -72,6 +73,7 @@ fun MovieDetailScreen(
                     }
                 }
             }
+            Spacer(modifier = Modifier.padding(16.dp))
             AsyncImage(
                 modifier = Modifier
                     .height(130.dp)
