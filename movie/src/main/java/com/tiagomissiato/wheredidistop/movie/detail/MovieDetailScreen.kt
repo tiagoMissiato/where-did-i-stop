@@ -73,7 +73,6 @@ fun MovieDetailScreen(
                     }
                 }
             }
-            Spacer(modifier = Modifier.padding(16.dp))
             AsyncImage(
                 modifier = Modifier
                     .height(130.dp)
